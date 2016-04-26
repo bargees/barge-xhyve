@@ -1,15 +1,15 @@
-# DockerRoot running on xhyve hypervisor
+# Barge running on xhyve hypervisor
 
-This is a toolbox to run [DockerRoot](https://github.com/ailispaw/docker-root) on xhyve hypervisor easily.
+This is a toolbox to run [Barge](https://github.com/bargees/barge) on xhyve hypervisor easily.
 
-For VirtualBox or QEMU, see https://github.com/ailispaw/docker-root-packer.
+For VirtualBox or QEMU, see https://github.com/bargees/barge-packer.
 
 ## Features
 
-- [DockerRoot](https://github.com/ailispaw/docker-root)
+- [Barge](https://github.com/bargees/barge)
 - Disable TLS
 - Expose the official IANA registered Docker port 2375
-- Support NFS synced folder: $HOME is NFS-mounted on the DockerRoot VM.
+- Support NFS synced folder: $HOME is NFS-mounted on the Barge VM.
 
 ## Requirements
 
@@ -37,11 +37,11 @@ or
 $ brew install xhyve
 ```
 
-## Setting up DockerRoot images and tools
+## Setting up Barge images and tools
 
 ```
-$ git clone https://github.com/ailispaw/docker-root-xhyve
-$ cd docker-root-xhyve
+$ git clone https://github.com/bargees/barge-xhyve
+$ cd barge-xhyve
 $ make init
 ```
 
@@ -50,8 +50,8 @@ $ make init
 ```
 $ sudo ./xhyverun.sh [<dir>]
 
-Welcome to DockerRoot docker-root /dev/ttyS0
-docker-root login: 
+Welcome to Barge barge /dev/ttyS0
+barge login: 
 ```
 
 or
@@ -65,21 +65,21 @@ Booting up...
 - On iTerm.app: This will split the current window, then you will see in the bottom pane as below.
 
 ```
-Welcome to DockerRoot docker-root /dev/ttyS0
-docker-root login: 
+Welcome to Barge barge /dev/ttyS0
+barge login: 
 ```
 
 ## Logging In
 
-- ID: docker
-- Password: docker (in most instances you will not be prompted for a password)
+- ID: bargee
+- Password: bargee (in most instances you will not be prompted for a password)
 
 ```
 $ make ssh
-docker-root-xhyve: running on 192.168.64.2
-docker@192.168.64.2's password: 
-Welcome to DockerRoot version 1.3.10, Docker version 1.9.1, build 66c06d0-stripped
-[docker@docker-root ~]$ 
+barge-xhyve: running on 192.168.64.2
+bargee@192.168.64.2's password: 
+Welcome to Barge 2.0.0, Docker version 1.9.1, build 66c06d0-stripped
+[bargee@barge ~]$ 
 ```
 
 ## Shutting Down
@@ -87,16 +87,15 @@ Welcome to DockerRoot version 1.3.10, Docker version 1.9.1, build 66c06d0-stripp
 Use `halt` command to shut down in the VM:
 
 ```
-[docker@docker-root ~]$ sudo halt
-halt[316]: Stopping Docker daemon
-docker[320]: Loading /var/lib/docker-root/profile
-docker[320]: Stopping Docker daemon
-halt[316]: Executing shutdown scripts in /etc/init.d
+[bargee@barge ~]$ sudo halt
+halt[324]: Executing shutdown scripts in /etc/init.d
 Stopping crond... OK
+docker[332]: Loading /etc/default/docker
+docker[332]: Stopping Docker daemon
 Stopping sshd... OK
 Saving random seed... done.
-halt[316]: halt
-[docker@docker-root ~]$ reboot: System halted
+halt[324]: halt
+[bargee@barge ~]$ reboot: System halted
 $ 
 ```
 
@@ -104,16 +103,15 @@ or, use `make halt` on the host:
 
 ```
 $ make halt
-docker-root-xhyve: running on 192.168.64.2
-docker@192.168.64.2's password:
-halt[317]: Stopping Docker daemon
-docker[321]: Loading /var/lib/docker-root/profile
-docker[321]: Stopping Docker daemon
-halt[317]: Executing shutdown scripts in /etc/init.d
+barge-xhyve: running on 192.168.64.2
+bargee@192.168.64.2's password:
+halt[326]: Executing shutdown scripts in /etc/init.d
 Stopping crond... OK
+docker[334]: Loading /etc/default/docker
+docker[334]: Stopping Docker daemon
 Stopping sshd... OK
 Saving random seed... done.
-halt[317]: halt
+halt[326]: halt
 Connection to 192.168.64.2 closed by remote host.
 Shutting down...
 ```
@@ -138,12 +136,12 @@ Then, in the VM, or on the host if you have installed the Docker client:
 
 ```
 $ make env
-docker-root-xhyve: running on 192.168.64.2
+barge-xhyve: running on 192.168.64.2
 export DOCKER_HOST=tcp://192.168.64.2:2375;
 unset DOCKER_CERT_PATH;
 unset DOCKER_TLS_VERIFY;
 $ eval $(make env)
-docker-root-xhyve: running on 192.168.64.2
+barge-xhyve: running on 192.168.64.2
 
 $ docker info
 Containers: 0
@@ -153,35 +151,35 @@ Storage Driver: overlay
  Backing Filesystem: extfs
 Execution Driver: native-0.2
 Logging Driver: json-file
-Kernel Version: 4.4.8-docker-root
-Operating System: DockerRoot v1.3.10
+Kernel Version: 4.4.8-barge
+Operating System: Barge 2.0.0
 CPUs: 1
 Total Memory: 999.4 MiB
-Name: docker-root
-ID: H2SV:IRHA:ZJ23:J3CL:KLHE:V2IP:UML4:YPEE:TVW2:NT6V:QFAM:3X6I
+Name: barge
+ID: 4PSM:WE3D:OB7Q:TSDO:QIXD:YRVU:YVJP:C45G:TVHR:QOBG:VUBS:NK4V
 Debug mode (server): true
  File Descriptors: 12
  Goroutines: 18
- System Time: 2016-04-20T23:42:19.078377304Z
+ System Time: 2016-04-26T18:39:48.469457293Z
  EventsListeners: 0
  Init SHA1:
  Init Path: /opt/bin/docker
  Docker Root Dir: /mnt/vda1/var/lib/docker
 ```
 
-## Upgrading DockerRoot
+## Upgrading Barge
 
-When DockerRoot is upgraded and docker-root-xhyve is updated,
+When Barge is upgraded and barge-xhyve is updated,
 
 ```
 $ git pull origin master
 $ make upgrade
 $ make up
 $ make ssh
-[docker@docker-root ~]$ sudo cp /var/lib/docker-root/start.sh /var/lib/docker-root/start.old
-[docker@docker-root ~]$ sudo wget -qO /var/lib/docker-root/start.sh https://raw.githubusercontent.com/ailispaw/docker-root-xhyve/master/contrib/configs/start.sh
-[docker@docker-root ~]$ sudo chmod +x /var/lib/docker-root/start.sh
-[docker@docker-root ~]$ sudo reboot
+[bargee@barge ~]$ sudo cp /etc/init.d/start.sh /etc/init.d/start.old
+[bargee@barge ~]$ sudo wget -qO /etc/init.d/start.sh https://raw.githubusercontent.com/bargees/barge-xhyve/master/contrib/configs/start.sh
+[bargee@barge ~]$ sudo chmod +x /etc/init.d/start.sh
+[bargee@barge ~]$ sudo reboot
 ```
 
 ## Resources

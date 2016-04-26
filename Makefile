@@ -60,13 +60,13 @@ env: | status
 
 status:
 	@if [ ! -f vm/.mac_address ]; then \
-		echo "docker-root-xhyve: stopped"; \
+		echo "barge-xhyve: stopped"; \
 		exit 1; \
 	else \
 		if ping -c 1 -t 1 $(IP_ADDR) >/dev/null 2>&1; then \
-			echo "docker-root-xhyve: running on $(IP_ADDR)"; \
+			echo "barge-xhyve: running on $(IP_ADDR)"; \
 		else \
-			echo "docker-root-xhyve: starting"; \
+			echo "barge-xhyve: starting"; \
 			exit 1; \
 		fi; \
 	fi >&2;

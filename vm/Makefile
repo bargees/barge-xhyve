@@ -1,11 +1,11 @@
 KERNEL   := bzImage
 INITRD   := initrd
-CMDLINE  := earlyprintk=serial console=ttyS0 console=tty0 quiet loglevel=3 docker-root.switch_root
-ISO      := docker-root.iso
-HDD      := docker-root-data.img
+CMDLINE  := earlyprintk=serial console=ttyS0 console=tty0 quiet loglevel=3 barge.switch_root
+ISO      := barge.iso
+HDD      := barge-data.img
 UUID     := A01FB25C-3A19-4759-A47A-2E353E51807D
-USERNAME := docker
-PASSWORD := docker
+USERNAME := bargee
+PASSWORD := bargee
 
 all: $(KERNEL) $(INITRD) $(HDD)
 
@@ -15,17 +15,17 @@ upgrade:
 
 $(KERNEL) $(INITRD): $(ISO)
 	hdiutil mount $(ISO)
-	cp /Volumes/DOCKER_ROOT/boot/$@ . && sync
-	hdiutil unmount /Volumes/DOCKER_ROOT
+	cp /Volumes/BARGE/boot/$@ . && sync
+	hdiutil unmount /Volumes/BARGE
 
 $(ISO):
-	curl -OL https://github.com/ailispaw/docker-root/releases/download/v1.3.10/$@
+	curl -OL https://github.com/bargees/barge/releases/download/2.0.0/$@
 
-$(HDD): docker-root-data.tar.gz
+$(HDD): barge-data.tar.gz
 	tar zxmvf $<
 
-docker-root-data.tar.gz:
-	curl -OL https://github.com/ailispaw/docker-root-xhyve/releases/download/v2.1.2/$@
+barge-data.tar.gz:
+	curl -OL https://github.com/bargees/barge-xhyve/releases/download/2.0.0/$@
 
 xhyve_uuid:
 	@echo $(UUID)
@@ -53,7 +53,7 @@ ssh_args:
 
 clean:
 	$(RM) $(KERNEL) $(INITRD) $(HDD)
-	$(RM) $(ISO) docker-root-data.tar.gz
+	$(RM) $(ISO) barge-data.tar.gz
 	$(RM) .mac_address
 
 .PHONY: all upgrade xhyve_uuid xhyve_kernel xhyve_cmdline xhyve_hdd \
