@@ -5,8 +5,8 @@ License: BSD as well as [xhyve](https://github.com/mist64/xhyve)
 config.mk and uuid.h are from xhyve and most of main.c is from xhyve, too.
 
 ```
-$ git clone https://github.com/ailispaw/docker-root-xhyve
-$ cd docker-root-xhyve
+$ git clone https://github.com/bargees/barge-xhyve
+$ cd barge-xhyve
 $ make uuid2ip
 /Library/Developer/CommandLineTools/usr/bin/make -C uuid2ip
 cc main.c
