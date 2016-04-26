@@ -1,10 +1,10 @@
 #!/bin/sh
 
-NFS_ROOT=$(cat /proc/cmdline | sed -n 's/^.*docker-root.nfsroot="\([^"]\+\)".*$/\1/p')
-SHARED_FOLDER=$(cat /proc/cmdline | sed -n 's/^.*docker-root.shared_folder="\([^"]\+\)".*$/\1/p')
+NFS_ROOT=$(cat /proc/cmdline | sed -n 's/^.*barge.nfsroot="\([^"]\+\)".*$/\1/p')
+SHARED_FOLDER=$(cat /proc/cmdline | sed -n 's/^.*barge.shared_folder="\([^"]\+\)".*$/\1/p')
 : ${SHARED_FOLDER:="${NFS_ROOT}"}
 
-VIRTFS_UNAME=$(cat /proc/cmdline | sed -n 's/^.*docker-root.virtfs_uname=\([^ ]\+\).*$/\1/p')
+VIRTFS_UNAME=$(cat /proc/cmdline | sed -n 's/^.*barge.virtfs_uname=\([^ ]\+\).*$/\1/p')
 
 GW_IP=$(ip route get 8.8.8.8 | awk 'NR==1 {print $3}')
 
@@ -16,7 +16,7 @@ if [ -n "${SHARED_FOLDER}" ]; then
   mkdir -p "${MOUNT_POINT}"
 
   if [ -n "${VIRTFS_UNAME}" ]; then
-    mount -t 9p -o version=9p2000,trans=virtio,access=any,uname=${VIRTFS_UNAME},dfltuid=$(id -u docker),dfltgid=$(id -g docker) host "${MOUNT_POINT}"
+    mount -t 9p -o version=9p2000,trans=virtio,access=any,uname=${VIRTFS_UNAME},dfltuid=$(id -u bargee),dfltgid=$(id -g bargee) host "${MOUNT_POINT}"
   fi
   if ! mountpoint -q "${MOUNT_POINT}"; then
     if [ -n "${GW_IP}" ]; then

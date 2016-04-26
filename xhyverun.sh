@@ -15,7 +15,7 @@ UNAME=${SUDO_USER:-$(id -un)}
 
 KERNEL=$(make -C vm xhyve_kernel)
 INITRD=$(make -C vm xhyve_initrd)
-CMDLINE="$(make -C vm xhyve_cmdline) docker-root.shared_folder=\"${SHARED_FOLDER}\" docker-root.virtfs_uname=${UNAME}"
+CMDLINE="$(make -C vm xhyve_cmdline) barge.shared_folder=\"${SHARED_FOLDER}\" barge.virtfs_uname=${UNAME}"
 HDD=$(make -C vm xhyve_hdd)
 UUID=$(make -C vm xhyve_uuid)
 
@@ -41,7 +41,7 @@ if [ -n "${UUID}" ]; then
   UUID="-U ${UUID}"
 fi
 
-echo "Starting DockerRoot VM"
+echo "Starting VM"
 while [ 1 ]; do
   xhyve $ACPI $MEM $SMP $PCI_DEV $LPC_DEV $NET $IMG_CD $IMG_HDD $UUID -f kexec,$KERNEL,$INITRD,"$CMDLINE"
   if [ $? -ne 0 ]; then
