@@ -1,12 +1,12 @@
 # Barge running on xhyve hypervisor
 
-This is a toolbox to run [Barge](https://github.com/bargees/barge) on xhyve hypervisor easily.
+This is a toolbox to run [Barge OS](https://github.com/bargees/barge-os) on xhyve hypervisor easily.
 
 For VirtualBox or QEMU, see https://github.com/bargees/barge-packer.
 
 ## Features
 
-- [Barge](https://github.com/bargees/barge)
+- [Barge OS](https://github.com/bargees/barge-os)
 - Disable TLS
 - Expose the official IANA registered Docker port 2375
 - Support NFS synced folder: $HOME is NFS-mounted on the Barge VM.
