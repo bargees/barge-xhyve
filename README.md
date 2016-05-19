@@ -1,4 +1,4 @@
-# Barge running on docker/hyperkit
+# Barge running on Docker/HyperKit
 
 This is a toolbox to run [Barge OS](https://github.com/bargees/barge-os) on docker/hyperkit easily.
 
@@ -13,7 +13,7 @@ For VirtualBox or QEMU, see https://github.com/bargees/barge-packer.
 
 ## Requirements
 
-- [docker/hyperkit](https://github.com/docker/hyperkit) with qcow support
+- [Docker/HyperKit](https://github.com/docker/hyperkit) with qcow support
   - Mac OS X Yosemite 10.10.3 or later
   - A 2010 or later Mac (i.e. a CPU that supports EPT)
 
@@ -22,7 +22,7 @@ For VirtualBox or QEMU, see https://github.com/bargees/barge-packer.
 - **Kernel Panic** will occur on booting, if VirtualBox (< v5.0) has run before.
 - Pay attention to **exposing the port 2375 without TLS**, as you see the features.
 
-## Installing docker/hyperkit
+## Installing Docker/HyperKit
 
 To enable qcow support, you need an OCaml OPAM development environment.  
 https://github.com/docker/hyperkit#building
