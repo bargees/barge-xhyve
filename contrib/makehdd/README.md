@@ -22,7 +22,7 @@ $ sudo ./xhyverun.sh
 Welcome to Barge barge /dev/ttyS0
 barge login: bargee
 Password: 
-Welcome to Barge 2.0.0, Docker version 1.9.1, build 66c06d0-stripped
+Welcome to Barge 2.0.2, Docker version 1.9.1, build 66c06d0-stripped
 [bargee@barge ~]$ wget https://raw.githubusercontent.com/bargees/barge-xhyve/master/contrib/makehdd/makehdd.sh
 [bargee@barge ~]$ chmod +x makehdd.sh
 [bargee@barge ~]$ sudo ./makehdd.sh
@@ -58,6 +58,10 @@ Stopping sshd... OK
 Saving random seed... done.
 halt[309]: halt
 [bargee@barge ~]$ reboot: System halted
+```
+
+```
+$ qemu-img convert -f raw -O qcow2 barge-data.img barge-data.qcow2
 ```
 
 Done.
