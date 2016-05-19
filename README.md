@@ -1,6 +1,6 @@
-# Barge running on xhyve hypervisor
+# Barge running on docker/hyperkit
 
-This is a toolbox to run [Barge OS](https://github.com/bargees/barge-os) on xhyve hypervisor easily.
+This is a toolbox to run [Barge OS](https://github.com/bargees/barge-os) on docker/hyperkit easily.
 
 For VirtualBox or QEMU, see https://github.com/bargees/barge-packer.
 
@@ -13,7 +13,7 @@ For VirtualBox or QEMU, see https://github.com/bargees/barge-packer.
 
 ## Requirements
 
-- [xhyve](https://github.com/mist64/xhyve)
+- [docker/hyperkit](https://github.com/docker/hyperkit) with qcow support
   - Mac OS X Yosemite 10.10.3 or later
   - A 2010 or later Mac (i.e. a CPU that supports EPT)
 
@@ -22,25 +22,30 @@ For VirtualBox or QEMU, see https://github.com/bargees/barge-packer.
 - **Kernel Panic** will occur on booting, if VirtualBox (< v5.0) has run before.
 - Pay attention to **exposing the port 2375 without TLS**, as you see the features.
 
-## Installing xhyve
+## Installing docker/hyperkit
+
+To enable qcow support, you need an OCaml OPAM development environment.  
+https://github.com/docker/hyperkit#building
 
 ```
-$ git clone https://github.com/mist64/xhyve
-$ cd xhyve
+$ brew install opam
+$ opam init
+$ eval `opam config env`
+$ opam pin add qcow-format git://github.com/mirage/ocaml-qcow#master
+$ opam install uri qcow-format
+```
+
+```
+$ git clone https://github.com/docker/hyperkit
+$ cd hyperkit
 $ make
-$ cp build/xhyve /usr/local/bin/    # You may require sudo
-```
-
-or
-
-```
-$ brew install xhyve
+$ install -CSv build/com.docker.hyperkit /usr/local/bin/    # You may require sudo
 ```
 
 ## Setting up Barge images and tools
 
 ```
-$ git clone https://github.com/bargees/barge-xhyve
+$ git clone -b hyperkit https://github.com/bargees/barge-xhyve
 $ cd barge-xhyve
 $ make init
 ```
