@@ -2,7 +2,7 @@ KERNEL   := bzImage
 INITRD   := initrd
 CMDLINE  := earlyprintk=serial console=ttyS0 console=tty0 quiet loglevel=3 barge.switch_root
 ISO      := barge.iso
-HDD      := barge-data.img
+HDD      := barge-data.qcow2
 UUID     := A01FB25C-3A19-4759-A47A-2E353E51807D
 USERNAME := bargee
 PASSWORD := bargee
@@ -21,10 +21,7 @@ $(KERNEL) $(INITRD): $(ISO)
 $(ISO):
 	curl -L https://github.com/bargees/barge-os/releases/download/2.0.2/$(@F) -o $@
 
-$(HDD): barge-data.tar.gz
-	tar zxmvf $<
-
-barge-data.tar.gz:
+$(HDD):
 	curl -L https://github.com/bargees/barge-xhyve/releases/download/2.0.0/$(@F) -o $@
 
 xhyve_uuid:

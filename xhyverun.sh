@@ -22,7 +22,7 @@ MEM="-m 1G"
 #SMP="-c 2"
 NET="-s 2:0,virtio-net"
 if [ -n "${HDD}" ]; then
-  IMG_HDD="-s 4,virtio-blk,${HDD}"
+  IMG_HDD="-s 4,virtio-blk,file://${HDD},format=qcow"
 fi
 PCI_DEV="-s 0:0,hostbridge -s 31,lpc"
 LPC_DEV="-l com1,stdio"
