@@ -72,7 +72,7 @@ barge login:
 $ make ssh
 barge-xhyve: running on 192.168.64.2
 bargee@192.168.64.2's password: 
-Welcome to Barge 2.0.3, Docker version 1.9.1, build 66c06d0-stripped
+Welcome to Barge 2.1.0, Docker version 1.9.1, build 66c06d0-stripped
 [bargee@barge ~]$ 
 ```
 
@@ -146,15 +146,15 @@ Storage Driver: overlay
 Execution Driver: native-0.2
 Logging Driver: json-file
 Kernel Version: 4.4.11-barge
-Operating System: Barge 2.0.3
+Operating System: Barge 2.1.0
 CPUs: 1
 Total Memory: 999.4 MiB
 Name: barge
-ID: RW4N:CMH4:WXUK:KIJN:XKH3:GT6K:PYNV:HNCE:KID4:TS5H:FLPK:TE4M
+ID: RENK:HPRR:DKIW:3ZME:MMIV:AFGQ:ZX6M:ZQDP:ZYK4:HLMZ:SNS7:S7TI
 Debug mode (server): true
  File Descriptors: 12
  Goroutines: 18
- System Time: 2016-05-19T04:43:08.235075524Z
+ System Time: 2016-06-01T00:53:44.163628255Z
  EventsListeners: 0
  Init SHA1:
  Init Path: /opt/bin/docker
