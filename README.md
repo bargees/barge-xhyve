@@ -83,7 +83,7 @@ barge login:
 $ make ssh
 barge-xhyve: running on 192.168.64.2
 bargee@192.168.64.2's password: 
-Welcome to Barge 2.1.4, Docker version 1.9.1, build 66c06d0-stripped
+Welcome to Barge 2.1.5, Docker version 1.9.1, build 66c06d0-stripped
 [bargee@barge ~]$ 
 ```
 
@@ -157,19 +157,19 @@ Storage Driver: overlay
 Execution Driver: native-0.2
 Logging Driver: json-file
 Kernel Version: 4.4.14-barge
-Operating System: Barge 2.1.4
+Operating System: Barge 2.1.5
 CPUs: 1
 Total Memory: 999.3 MiB
 Name: barge
-ID: MC3Y:26VP:5RAN:KG3J:XPF7:RPWI:W3XG:2HQF:BUV2:PMZI:3QOU:NHXY
+ID: KUJU:HOYD:UJTN:NYJO:KPQ5:6VEJ:KQXV:RNVU:6Z6D:MK5C:C7FJ:Q6O4
 Debug mode (server): true
  File Descriptors: 12
  Goroutines: 18
- System Time: 2016-06-28T14:01:16.388346959Z
+ System Time: 2016-06-29T16:37:37.031889498Z
  EventsListeners: 0
  Init SHA1:
  Init Path: /opt/bin/docker
- Docker Root Dir: /mnt/vda1/var/lib/docker
+ Docker Root Dir: /mnt/data/var/lib/docker
 ```
 
 ## Upgrading Barge
