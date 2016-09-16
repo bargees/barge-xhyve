@@ -1,6 +1,6 @@
 KERNEL   := bzImage
 INITRD   := initrd
-CMDLINE  := earlyprintk=serial console=ttyS0 console=tty0 quiet loglevel=3 barge.switch_root
+CMDLINE  := quiet loglevel=3 barge.switch_root
 ISO      := barge.iso
 HDD      := barge-data.img
 UUID     := A01FB25C-3A19-4759-A47A-2E353E51807D
@@ -19,7 +19,7 @@ $(KERNEL) $(INITRD): $(ISO)
 	hdiutil unmount /Volumes/BARGE
 
 $(ISO):
-	curl -L https://github.com/bargees/barge-os/releases/download/2.2.1/$(@F) -o $@
+	curl -L https://github.com/bargees/barge-os/releases/download/2.2.2/$(@F) -o $@
 
 $(HDD): barge-data.tar.gz
 	tar zxmvf $<
