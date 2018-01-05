@@ -19,7 +19,7 @@ $(KERNEL) $(INITRD): $(ISO)
 	hdiutil unmount /Volumes/BARGE
 
 $(ISO):
-	curl -L https://github.com/bargees/barge-os/releases/download/2.7.2/$(@F) -o $@
+	curl -L https://github.com/bargees/barge-os/releases/download/2.7.3/$(@F) -o $@
 
 $(HDD): barge-data.tar.gz
 	tar zxmvf $<
