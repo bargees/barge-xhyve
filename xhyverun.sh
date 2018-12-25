@@ -1,5 +1,7 @@
 #!/bin/sh
 
+PATH=$PATH:/Applications/Docker.app/Contents/Resources/bin
+
 VBOX_VERSION=$(VBoxManage --version 2> /dev/null)
 if [ -n "${VBOX_VERSION}" ]; then
   VBOX_VERSION=($(echo ${VBOX_VERSION} | tr -s '.' ' '))
@@ -63,7 +65,7 @@ fi
 echo "Starting VM"
 while [ 1 ]; do
   com.docker.hyperkit $ACPI $MEM $SMP $PCI_DEV $LPC_DEV $NET $IMG_CD $IMG_HDD $UUID -f kexec,$KERNEL,$INITRD,"$CMDLINE"
-  if [ $? -ne 0 ]; then
+  if [ $? -eq 0 ]; then
     break
   fi
 done
