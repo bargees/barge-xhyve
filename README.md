@@ -78,7 +78,7 @@ barge login:
 $ make ssh
 barge-xhyve: running on 192.168.64.2
 bargee@192.168.64.2's password: 
-Welcome to Barge 2.13.0, Docker version 1.10.3, build 20f81dd
+Welcome to Barge 2.15.0, Docker version 1.10.3, build 662b14f
 [bargee@barge ~]$ 
 ```
 
@@ -88,14 +88,16 @@ Use `halt` command to shut down in the VM:
 
 ```
 [bargee@barge ~]$ sudo halt
-halt[324]: Executing shutdown scripts in /etc/init.d
+halt[341]: Executing shutdown scripts in /etc/init.d
 Stopping crond... OK
-docker[332]: Loading /etc/default/docker
-docker[332]: Stopping Docker daemon
+docker[349]: Loading /etc/default/docker
+docker[349]: Stopping Docker daemon
 Stopping sshd... OK
-Saving random seed... done.
-halt[324]: halt
-[bargee@barge ~]$ reboot: System halted
+Stopping haveged: stopped /usr/sbin/haveged (pid 108 106)
+OK
+Saving random seed: OK
+halt[341]: halt
+[bargee@barge ~]$ Connection to 192.168.64.2 closed by remote host.
 $ 
 ```
 
@@ -105,14 +107,15 @@ or, use `make halt` on the host:
 $ make halt
 barge-xhyve: running on 192.168.64.2
 bargee@192.168.64.2's password:
-halt[326]: Executing shutdown scripts in /etc/init.d
+halt[347]: Executing shutdown scripts in /etc/init.d
 Stopping crond... OK
-docker[334]: Loading /etc/default/docker
-docker[334]: Stopping Docker daemon
+docker[355]: Loading /etc/default/docker
+docker[355]: Stopping Docker daemon
 Stopping sshd... OK
-Saving random seed... done.
-halt[326]: halt
-Connection to 192.168.64.2 closed by remote host.
+Stopping haveged: stopped /usr/sbin/haveged (pid 108 106)
+OK
+Saving random seed: OK
+halt[347]: halt
 Shutting down...
 ```
 
@@ -157,18 +160,18 @@ Logging Driver: json-file
 Plugins:
  Volume: local
  Network: null host bridge
-Kernel Version: 4.14.125-barge
-Operating System: Barge 2.13.0
+Kernel Version: 4.14.282-barge
+Operating System: Barge 2.15.0
 OSType: linux
 Architecture: x86_64
 CPUs: 1
-Total Memory: 995.8 MiB
+Total Memory: 995.7 MiB
 Name: barge
-ID: CJOC:6SXR:3WOA:4LCE:AG6K:J22I:UYSN:T7M7:UF7E:JN3B:6J7Y:F776
+ID: YHXM:HS2U:RCPQ:RV7X:NNFC:L2LV:XKQ7:3NNU:2CU7:ZZNV:SSRH:BZUK
 Debug mode (server): true
  File Descriptors: 10
  Goroutines: 15
- System Time: 2019-06-12T05:04:50.354063203Z
+ System Time: 2022-06-07T17:53:54.514989833Z
  EventsListeners: 0
  Init SHA1:
  Init Path: /opt/bin/docker
